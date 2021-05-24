@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Normalize } from "styled-normalize";
+import { ThemeProvider } from "styled-components";
+import { setConfiguration } from "react-grid-system";
+
+import { GlobalStyle } from "./theme/GlobalStyle";
+import { mainTheme } from "./theme/mainTheme";
+import { RootView } from "./views/RootView";
+
+setConfiguration({ gutterWidth: 48, breakpoints: mainTheme.breakpoints });
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Normalize />
+      <ThemeProvider theme={mainTheme}>
+        <>
+          <GlobalStyle />
+          <RootView />
+        </>
+      </ThemeProvider>
+    </>
   );
 }
 
